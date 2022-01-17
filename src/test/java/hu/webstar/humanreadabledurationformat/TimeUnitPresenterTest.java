@@ -1,5 +1,7 @@
-package hu.webstart.humanreadabledurationformat;
+package hu.webstar.humanreadabledurationformat;
 
+import hu.webstar.humanreadabledurationformat.TimeFormatter;
+import hu.webstar.humanreadabledurationformat.TimeUnit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;

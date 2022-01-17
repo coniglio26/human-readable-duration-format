@@ -1,4 +1,4 @@
-package hu.webstart.humanreadabledurationformat;
+package hu.webstar.humanreadabledurationformat;
 
 public enum TimeUnit {
 
