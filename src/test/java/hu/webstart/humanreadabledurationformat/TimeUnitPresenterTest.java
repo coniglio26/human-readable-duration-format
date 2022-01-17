@@ -5,6 +5,8 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TimeUnitPresenterTest {
@@ -43,5 +45,38 @@ class TimeUnitPresenterTest {
         Integer input = (Integer) testCases[i][0];
         String expected = (String) testCases[i][1];
         assertEquals(expected, timeFormatter.formatDuration(input));
+    }
+
+    @RepeatedTest(value = 50, name = "testSum: {currentRepetition} / {totalRepetitions}")
+    public void randomTestsWithPositiveNumbers_validValues() {
+        Random r = new Random();
+
+        int[] randomTimeUnits = {r.nextInt(48) + 2,
+                r.nextInt(363) + 2,
+                r.nextInt(22) + 2,
+                r.nextInt(58) + 2,
+                r.nextInt(58) + 2};
+
+        int[] randomTimeUnitsInSeconds =
+                {randomTimeUnits[0] * TimeUnit.YEAR.getDivisor(),
+                        randomTimeUnits[1] * TimeUnit.DAY.getDivisor(),
+                        randomTimeUnits[2] * TimeUnit.HOUR.getDivisor(),
+                        randomTimeUnits[3] * TimeUnit.MINUTE.getDivisor(),
+                        randomTimeUnits[4]};
+
+        int input = 0;
+        for (int j = 0; j < 5; j++) {
+            input += randomTimeUnitsInSeconds[j];
+        }
+
+        StringBuilder expected = new StringBuilder();
+
+        expected.append(randomTimeUnits[0]).append(" years, ")
+                .append(randomTimeUnits[1]).append(" days, ")
+                .append(randomTimeUnits[2]).append(" hours, ")
+                .append(randomTimeUnits[3]).append(" minutes and ")
+                .append(randomTimeUnits[4]).append(" seconds");
+
+        assertEquals(expected.toString(), timeFormatter.formatDuration(input));
     }
 }
