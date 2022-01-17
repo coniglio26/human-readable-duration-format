@@ -23,8 +23,10 @@ public class TimeUnitPresenter {
 
     @Override
     public String toString() {
-        return "TimeUnitPresenter{" +
-                "timeUnitAndValues=" + timeUnitAndValues +
-                '}';
+        StringBuilder result = new StringBuilder();
+        if (timeUnitAndValues.size() == 0) {
+            result.append("now");
+        }
+        return result.toString();
     }
 }
