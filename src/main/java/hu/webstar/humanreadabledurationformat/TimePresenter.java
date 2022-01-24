@@ -3,7 +3,7 @@ package hu.webstar.humanreadabledurationformat;
 
 public class TimePresenter {
 
-    private TimeQuantities timeQuantities;
+    private TimeQuantities timeQuantities = new TimeQuantities();
 
     public TimePresenter() {
     }
@@ -12,7 +12,7 @@ public class TimePresenter {
         this.timeQuantities = timeQuantities;
     }
 
-    public String presentTime() {
+    public String generateTime() {
         if (timeQuantities.getAvailableTimeUnits().size() == 0) {
             return "now";
         }

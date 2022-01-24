@@ -6,6 +6,6 @@ public class TimeFormatter {
         if (seconds < 0) {
             throw new IllegalArgumentException("Seconds value cannot be negative!");
         }
-        return new TimePresenter(new TimeConverter().convertTime(seconds)).presentTime();
+        return new TimePresenter(new TimeConverter().convertTime(seconds)).generateTime();
     }
 }
