@@ -7,12 +7,12 @@ public class TimeUnitPresenter {
 
     public TimeUnitPresenter() {
     }
+
     public TimeUnitPresenter(TimeQuantities timeQuantities) {
         this.timeQuantities = timeQuantities;
     }
 
     public String presentTime() {
-
         if (timeQuantities.getTimeUnitsAndValuesSize() == 0) {
             return "now";
         }
