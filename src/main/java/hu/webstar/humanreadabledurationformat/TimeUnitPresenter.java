@@ -1,50 +1,38 @@
 package hu.webstar.humanreadabledurationformat;
 
-import java.util.Map;
 
 public class TimeUnitPresenter {
-    private Map<TimeUnit, Integer> timeUnitAndValues;
+
+    private TimeQuantities timeQuantities;
 
     public TimeUnitPresenter() {
     }
-
-    public TimeUnitPresenter(Map<TimeUnit, Integer> timeUnitAndValues) {
-        this.timeUnitAndValues = timeUnitAndValues;
+    public TimeUnitPresenter(TimeQuantities timeQuantities) {
+        this.timeQuantities = timeQuantities;
     }
 
+    public String presentTime() {
 
-    public Map<TimeUnit, Integer> getTimeUnitAndValues() {
-        return timeUnitAndValues;
-    }
-
-    public void setTimeUnitAndValues(Map<TimeUnit, Integer> timeUnitAndValues) {
-        this.timeUnitAndValues = timeUnitAndValues;
-    }
-
-    @Override
-    public String toString() {
+        if (timeQuantities.getTimeUnitsAndValuesSize() == 0) {
+            return "now";
+        }
 
         StringBuilder result = new StringBuilder();
-        if (timeUnitAndValues.size() == 0) {
-            result.append("now");
+        int remainingParts = 1;
 
-        } else {
-            int j = 1;
+        for (TimeUnit timeUnit : timeQuantities.getAvailableTimeUnits()) {
 
-            for (Map.Entry<TimeUnit, Integer> unit : timeUnitAndValues.entrySet()) {
-
-                result.append(unit.getValue())
-                        .append(" ")
-                        .append(unit.getKey().toString().toLowerCase())
-                        .append((unit.getValue()) > 1 ? "s" : "")
-                        .append(
-                                switch (timeUnitAndValues.size() - j) {
-                                    case 0 -> "";
-                                    case 1 -> " and ";
-                                    default -> ", ";
-                                });
-                j++;
-            }
+            result.append(timeQuantities.getQuantity(timeUnit))
+                    .append(" ")
+                    .append(timeUnit.toString().toLowerCase())
+                    .append((timeQuantities.getQuantity(timeUnit)) > 1 ? "s" : "")
+                    .append(
+                            switch (timeQuantities.getTimeUnitsAndValuesSize() - remainingParts) {
+                                case 0 -> "";
+                                case 1 -> " and ";
+                                default -> ", ";
+                            });
+            remainingParts++;
         }
         return result.toString();
     }

@@ -1,7 +1,6 @@
 package hu.webstar.humanreadabledurationformat;
 
 public enum TimeUnit {
-
     YEAR (365 * 24 * 60 * 60),
     DAY(24 * 60 * 60),
     HOUR(60 * 60),
