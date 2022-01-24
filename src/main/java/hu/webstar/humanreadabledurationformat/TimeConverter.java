@@ -1,8 +1,8 @@
 package hu.webstar.humanreadabledurationformat;
 
-public class TimeUnitConverter {
+public class TimeConverter {
 
-    public TimeQuantities convertSecondsToMap(int second) {
+    public TimeQuantities convertTime(int second) {
         TimeQuantities timeQuantities = new TimeQuantities();
 
         if (second == 0) {
@@ -14,7 +14,7 @@ public class TimeUnitConverter {
         for (TimeUnit unit : TimeUnit.values()) {
             int quotient = remainingSeconds / unit.getDivisor();
             if (quotient > 0) {
-                timeQuantities.setTimeQuantities(unit, quotient);
+                timeQuantities.setQuantity(unit, quotient);
                 remainingSeconds %= unit.getDivisor();
             }
         }

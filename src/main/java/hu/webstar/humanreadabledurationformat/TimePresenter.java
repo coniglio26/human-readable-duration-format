@@ -1,19 +1,19 @@
 package hu.webstar.humanreadabledurationformat;
 
 
-public class TimeUnitPresenter {
+public class TimePresenter {
 
     private TimeQuantities timeQuantities;
 
-    public TimeUnitPresenter() {
+    public TimePresenter() {
     }
 
-    public TimeUnitPresenter(TimeQuantities timeQuantities) {
+    public TimePresenter(TimeQuantities timeQuantities) {
         this.timeQuantities = timeQuantities;
     }
 
     public String presentTime() {
-        if (timeQuantities.getTimeUnitsAndValuesSize() == 0) {
+        if (timeQuantities.getAvailableTimeUnits().size() == 0) {
             return "now";
         }
 
@@ -27,7 +27,7 @@ public class TimeUnitPresenter {
                     .append(timeUnit.toString().toLowerCase())
                     .append((timeQuantities.getQuantity(timeUnit)) > 1 ? "s" : "")
                     .append(
-                            switch (timeQuantities.getTimeUnitsAndValuesSize() - remainingParts) {
+                            switch (timeQuantities.getAvailableTimeUnits().size() - remainingParts) {
                                 case 0 -> "";
                                 case 1 -> " and ";
                                 default -> ", ";

@@ -9,7 +9,7 @@ import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TimeUnitPresenterTest {
+class TimePresenterTest {
 
     private TimeFormatter timeFormatter;
 
